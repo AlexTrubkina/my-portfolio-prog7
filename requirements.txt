@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 Markdown==3.2.2
 mkdocs==1.2.3
+=======
+Markdown==3.2.2
+mkdocs==1.2.3
+tornado==6.0.4
+>>>>>>> ffa9b030872924ececbc970a993558d0a0fa830c

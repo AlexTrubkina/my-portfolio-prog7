@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.2
+  heroku: circleci/heroku@0.0.10
+
+
+jobs:
+  build: 
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: install dependencies
+          command: pip3 install -r requirements.txt
+      - run:
+           name: build site
+           command: mkdocs build
+
+workflows:
+  heroku_deploy: 
+    jobs:
+      - build
+      - heroku/deploy-via-git:  
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
+
