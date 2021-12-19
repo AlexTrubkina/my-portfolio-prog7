@@ -20,6 +20,8 @@ jobs:
       - run:
            name: build site
            command: mkdocs build --site-dir site
+      - store_artifacts:
+           path: site
 
 workflows:
   heroku_deploy: 
@@ -32,7 +34,4 @@ workflows:
             branches:
               only: main
 
-artifacts:
-  name: site path
-  paths:
-    - site
+
