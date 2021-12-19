@@ -19,7 +19,7 @@ jobs:
           command: pip3 install -r requirements.txt
       - run:
            name: build site
-           command: mkdocs build
+           command: mkdocs build --site-dir site
 
 workflows:
   heroku_deploy: 
@@ -32,3 +32,7 @@ workflows:
             branches:
               only: main
 
+artifacts:
+  name: site path
+  paths:
+    - site
